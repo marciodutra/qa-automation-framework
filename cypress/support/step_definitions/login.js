@@ -4,14 +4,16 @@ const {
   Then,
 } = require("@badeball/cypress-cucumber-preprocessor");
 
+const loginPage = require("../../pages/LoginPage");
+
 Given("que o usuário está na página inicial", () => {
   cy.visit("/");
 });
 
 When("clicar no menu Signup \\/ Login", () => {
-  cy.contains("Signup / Login").click();
+  loginPage.accessLoginPage();
 });
 
 Then("a tela de login deverá ser exibida", () => {
-  cy.url().should("include", "/login");
+  loginPage.validateLoginPage();
 });

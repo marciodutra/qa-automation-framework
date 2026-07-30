@@ -89,3 +89,10 @@ npm run cy:run
 - ✅ Cucumber configurado
 - ✅ Esbuild configurado
 - ✅ Primeiro cenário BDD executando com sucesso
+
+### Automação Web
+
+- [x] Configuração do Cypress
+- [x] Configuração do Cucumber
+- [x] Primeiro cenário BDD
+- [x] Page Object Model
