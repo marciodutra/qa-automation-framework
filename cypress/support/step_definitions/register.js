@@ -45,6 +45,15 @@ When("preencher os dados da conta", () => {
 });
 
 Then("a conta deverá ser criada com sucesso", () => {
-    registerPage.clickCreateAccount();
-    registerPage.validateAccountCreated();
+    cy.fixture("users").then((user) => {
+
+        registerPage.clickCreateAccount();
+
+        registerPage.validateAccountCreated();
+
+        registerPage.clickContinue();
+
+        registerPage.validateLoggedUser(user.newUser.name);
+
+    });
 });

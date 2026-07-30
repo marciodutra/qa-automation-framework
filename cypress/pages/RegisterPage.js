@@ -82,6 +82,14 @@ class RegisterPage {
         cy.contains("Account Created!")
             .should("be.visible");
     }
+
+    clickContinue() {
+        cy.contains("Continue").click();
+    }
+
+    validateLoggedUser(name) {
+        cy.contains(`Logged in as ${name}`).should("be.visible");
+    }
 }
 
 module.exports = new RegisterPage();
