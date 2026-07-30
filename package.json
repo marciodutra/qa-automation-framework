@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "cy:open": "cypress open",
-    "cy:run": "cypress run"
+    "cy:run": "cypress run",
+    "report:clean": "rmdir /s /q cypress\\reports 2>nul || exit 0",
+    "report:open": "start cypress\\reports\\index.html",
+    "test": "npm run report:clean && npm run cy:run"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +16,11 @@
   "type": "commonjs",
   "devDependencies": {
     "cypress": "^15.19.0",
-    "esbuild": "^0.28.1"
+    "cypress-mochawesome-reporter": "^3.8.4",
+    "esbuild": "^0.28.1",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^4.4.1",
+    "mochawesome-report-generator": "^6.3.2"
   },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^26.0.0",
