@@ -10,6 +10,18 @@ class ProductsPage {
             .should("have.length.greaterThan", 0);
     }
 
+    addFirstProductToCart() {
+        cy.get(".product-image-wrapper")
+            .first()
+            .contains("Add to cart")
+            .click();
+    }
+
+    validateProductAddedToCart() {
+        cy.contains("Added!")
+            .should("be.visible");
+    }
+
 }
 
 module.exports = new ProductsPage();

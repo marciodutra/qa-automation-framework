@@ -52,7 +52,8 @@ qa-automation-framework
 │   │   └── features
 │   │       ├── login.feature
 │   │       ├── register.feature
-│   │       └── products.feature
+│   │       ├── products.feature
+│   │       └── cart.feature
 │   │
 │   ├── fixtures
 │   │   └── users.json
@@ -71,7 +72,8 @@ qa-automation-framework
 │           ├── common.js
 │           ├── login.js
 │           ├── register.js
-│           └── products.js
+│           ├── products.js
+│           └── cart.js
 │
 ├── docs
 │
@@ -103,6 +105,13 @@ Fixtures
 Cypress
 ```
 
+A arquitetura permite:
+
+* Separação entre comportamento e implementação
+* Maior reutilização de código
+* Facilidade de manutenção
+* Organização próxima de frameworks utilizados em projetos reais de QA
+
 ---
 
 # Features
@@ -133,6 +142,7 @@ Arquivos atuais:
 * login.js
 * register.js
 * products.js
+* cart.js
 
 O arquivo **common.js** concentra steps compartilhados entre diferentes funcionalidades, evitando duplicação de código.
 
@@ -147,6 +157,12 @@ Páginas implementadas:
 * LoginPage.js
 * RegisterPage.js
 * ProductsPage.js
+
+Responsabilidades:
+
+* Localização dos elementos da página
+* Execução das ações do usuário
+* Validações específicas da tela
 
 Benefícios:
 
@@ -170,6 +186,8 @@ Exemplo:
 ```javascript
 cy.accessApplication();
 ```
+
+Responsável por centralizar ações comuns utilizadas por diferentes cenários.
 
 ---
 
@@ -239,9 +257,9 @@ Fluxo validado:
 
 # Produtos
 
-## Cenários
+## Cenário
 
-### Visualizar produtos disponíveis
+Visualizar produtos disponíveis na página inicial.
 
 Fluxo validado:
 
@@ -249,13 +267,39 @@ Fluxo validado:
 * Sistema apresenta a seção de produtos.
 * Sistema apresenta a lista de produtos disponíveis.
 
-### Adicionar produto ao carrinho
+**Status**
+
+✅ Implementado
+
+---
+
+## Adicionar produto ao carrinho
 
 Fluxo validado:
 
-* Usuário visualiza os produtos.
-* Usuário seleciona um produto.
+* Usuário visualiza a lista de produtos.
+* Usuário seleciona o primeiro produto disponível.
 * Usuário adiciona o produto ao carrinho.
+* Sistema apresenta confirmação de produto adicionado.
+
+**Status**
+
+✅ Implementado
+
+---
+
+# Carrinho
+
+## Cenário
+
+Adicionar produto e validar carrinho.
+
+Fluxo validado:
+
+* Usuário acessa a página inicial.
+* Usuário adiciona um produto ao carrinho.
+* Usuário acessa o carrinho.
+* Sistema apresenta o produto adicionado.
 
 **Status**
 
@@ -308,7 +352,23 @@ cypress/videos
 
 # Resultado atual da execução
 
-Cenários automatizados:
+Última execução:
+
+```text
+Specs executadas: 4
+
+Features:
+✅ cart.feature
+✅ login.feature
+✅ products.feature
+✅ register.feature
+
+Testes:
+5 passando
+0 falhando
+```
+
+Resultado:
 
 | Feature                       | Status     |
 | ----------------------------- | ---------- |
@@ -316,6 +376,7 @@ Cenários automatizados:
 | Cadastro de usuário           | ✅ Passando |
 | Visualização de produtos      | ✅ Passando |
 | Adicionar produto ao carrinho | ✅ Passando |
+| Validar carrinho              | ✅ Passando |
 
 ---
 
@@ -349,8 +410,13 @@ Cenários automatizados:
 * [x] Validação de usuário autenticado
 * [x] Visualização de produtos
 * [x] Adicionar produto ao carrinho
-* [ ] Validar carrinho
+* [x] Acessar carrinho
+* [x] Validar produto no carrinho
+
+Próximas etapas:
+
 * [ ] Checkout
+* [ ] Finalização de pedido
 * [ ] Login utilizando usuário criado
 * [ ] Cenários negativos de login
 
@@ -409,6 +475,8 @@ Cenários automatizados:
 * ✅ Validação de usuário autenticado
 * ✅ Visualização de produtos
 * ✅ Adição de produto ao carrinho
+* ✅ Acesso ao carrinho
+* ✅ Validação do produto no carrinho
 
 ---
 
@@ -416,9 +484,10 @@ Cenários automatizados:
 
 As próximas evoluções seguirão um fluxo funcional de compra:
 
-* Validar carrinho
 * Checkout
 * Finalização de pedido
+* Login utilizando usuário criado
+* Cenários negativos de login
 * Automação de API
 * Relatórios Allure
 * Integração CI/CD
