@@ -1,0 +1,14 @@
+{
+  "newUser": {
+    "name": "QA Automation",
+    "password": "123456",
+    "firstName": "QA",
+    "lastName": "Automation",
+    "address": "Rua Teste",
+    "country": "Canada",
+    "state": "Sao Paulo",
+    "city": "Sao Paulo",
+    "zipcode": "01000000",
+    "mobile": "11999999999"
+  }
+}
