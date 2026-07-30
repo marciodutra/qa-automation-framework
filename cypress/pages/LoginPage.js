@@ -26,6 +26,16 @@ class LoginPage {
     validateLoggedUser(name) {
         cy.contains(`Logged in as ${name}`).should("be.visible");
     }
+
+    login(email, password) {
+
+        this.fillLoginEmail(email);
+
+        this.fillLoginPassword(password);
+
+        this.clickLoginButton();
+
+    }
 }
 
 module.exports = new LoginPage();

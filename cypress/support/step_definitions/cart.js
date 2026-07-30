@@ -7,7 +7,13 @@ const productsPage = require("../../pages/ProductsPage");
 
 
 When("acessar o carrinho", () => {
-    cy.contains("Cart").click();
+
+    cy.get("#cartModal")
+        .should("be.visible");
+
+    cy.contains("View Cart")
+        .click();
+
 });
 
 

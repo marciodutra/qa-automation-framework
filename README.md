@@ -53,7 +53,9 @@ qa-automation-framework
 │   │       ├── login.feature
 │   │       ├── register.feature
 │   │       ├── products.feature
-│   │       └── cart.feature
+│   │       ├── cart.feature
+│   │       ├── checkout.feature
+│   │       └── payment.feature
 │   │
 │   ├── fixtures
 │   │   └── users.json
@@ -61,7 +63,10 @@ qa-automation-framework
 │   ├── pages
 │   │   ├── LoginPage.js
 │   │   ├── RegisterPage.js
-│   │   └── ProductsPage.js
+│   │   ├── ProductsPage.js
+│   │   ├── CartPage.js
+│   │   ├── CheckoutPage.js
+│   │   └── PaymentPage.js
 │   │
 │   └── support
 │       │
@@ -73,7 +78,9 @@ qa-automation-framework
 │           ├── login.js
 │           ├── register.js
 │           ├── products.js
-│           └── cart.js
+│           ├── cart.js
+│           ├── checkout.js
+│           └── payment.js
 │
 ├── docs
 │
@@ -143,6 +150,8 @@ Arquivos atuais:
 * register.js
 * products.js
 * cart.js
+* checkout.js
+* payment.js
 
 O arquivo **common.js** concentra steps compartilhados entre diferentes funcionalidades, evitando duplicação de código.
 
@@ -157,6 +166,9 @@ Páginas implementadas:
 * LoginPage.js
 * RegisterPage.js
 * ProductsPage.js
+* CartPage.js
+* CheckoutPage.js
+* PaymentPage.js
 
 Responsabilidades:
 
@@ -248,6 +260,7 @@ Fluxo validado:
 * Sistema apresenta a mensagem **Account Created!**
 * Usuário continua para a aplicação.
 * Sistema apresenta o usuário autenticado.
+* Usuário realiza logout.
 
 **Status**
 
@@ -307,6 +320,49 @@ Fluxo validado:
 
 ---
 
+# Checkout
+
+## Cenário
+
+Realizar checkout com usuário autenticado.
+
+Fluxo validado:
+
+* Usuário adiciona produto ao carrinho.
+* Usuário acessa o carrinho.
+* Usuário seleciona **Proceed To Checkout**.
+* Sistema apresenta a página de checkout.
+* Sistema apresenta os dados de endereço.
+* Sistema apresenta a revisão do pedido.
+
+**Status**
+
+✅ Implementado
+
+---
+
+# Pagamento
+
+## Cenário
+
+Finalizar pedido com pagamento.
+
+Fluxo validado:
+
+* Usuário acessa a tela de pagamento.
+* Usuário informa nome no cartão.
+* Usuário informa número do cartão.
+* Usuário informa CVC.
+* Usuário informa validade do cartão.
+* Usuário confirma o pagamento.
+* Sistema apresenta confirmação do pedido.
+
+**Status**
+
+✅ Implementado
+
+---
+
 # Como executar o projeto
 
 ## Instalar dependências
@@ -355,16 +411,20 @@ cypress/videos
 Última execução:
 
 ```text
-Specs executadas: 4
+Specs executadas: 6
 
 Features:
+
 ✅ cart.feature
+✅ checkout.feature
 ✅ login.feature
+✅ payment.feature
 ✅ products.feature
 ✅ register.feature
 
 Testes:
-5 passando
+
+7 passando
 0 falhando
 ```
 
@@ -377,6 +437,8 @@ Resultado:
 | Visualização de produtos      | ✅ Passando |
 | Adicionar produto ao carrinho | ✅ Passando |
 | Validar carrinho              | ✅ Passando |
+| Checkout                      | ✅ Passando |
+| Finalização de pedido         | ✅ Passando |
 
 ---
 
@@ -412,12 +474,12 @@ Resultado:
 * [x] Adicionar produto ao carrinho
 * [x] Acessar carrinho
 * [x] Validar produto no carrinho
+* [x] Checkout
+* [x] Finalização de pedido
 
 Próximas etapas:
 
-* [ ] Checkout
-* [ ] Finalização de pedido
-* [ ] Login utilizando usuário criado
+* [ ] Login utilizando usuário cadastrado previamente
 * [ ] Cenários negativos de login
 
 ---
@@ -477,16 +539,17 @@ Próximas etapas:
 * ✅ Adição de produto ao carrinho
 * ✅ Acesso ao carrinho
 * ✅ Validação do produto no carrinho
+* ✅ Fluxo completo de checkout
+* ✅ Fluxo completo de pagamento
+* ✅ Finalização de pedido
 
 ---
 
 # Próximas implementações
 
-As próximas evoluções seguirão um fluxo funcional de compra:
+As próximas evoluções seguirão melhorias de qualidade e cobertura:
 
-* Checkout
-* Finalização de pedido
-* Login utilizando usuário criado
+* Login utilizando usuário cadastrado previamente
 * Cenários negativos de login
 * Automação de API
 * Relatórios Allure

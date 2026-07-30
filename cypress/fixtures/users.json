@@ -1,6 +1,7 @@
 {
     "newUser": {
         "name": "QA Automation",
+        "email": "qaautomation@test.com",
         "password": "123456",
         "firstName": "QA",
         "lastName": "Automation",
