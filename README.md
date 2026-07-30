@@ -17,6 +17,7 @@ Construir uma base de automação contendo:
 * Fixtures para massa de dados
 * Testes de API
 * Integração Contínua (CI/CD)
+* Relatórios de execução
 
 ---
 
@@ -104,14 +105,15 @@ Cypress
 
 ---
 
-# Feature
+# Features
 
-Responsável pela descrição dos cenários utilizando linguagem Gherkin.
+As funcionalidades são descritas utilizando linguagem Gherkin seguindo o padrão BDD.
 
 Exemplo:
 
 ```gherkin
 Scenario: Realizar cadastro de novo usuário
+
   Given que o usuário está na página inicial
   When acessar a tela de cadastro
   And preencher os dados iniciais de cadastro
@@ -132,7 +134,7 @@ Arquivos atuais:
 * register.js
 * products.js
 
-O arquivo **common.js** concentra os steps compartilhados entre diferentes funcionalidades, reduzindo duplicação de código.
+O arquivo **common.js** concentra steps compartilhados entre diferentes funcionalidades, evitando duplicação de código.
 
 ---
 
@@ -210,9 +212,9 @@ Fluxo validado:
 
 ---
 
-## Cadastro de usuário
+# Cadastro de usuário
 
-### Cenário
+## Cenário
 
 Realizar cadastro completo de um novo usuário.
 
@@ -235,17 +237,25 @@ Fluxo validado:
 
 ---
 
-## Produtos
+# Produtos
 
-### Cenário
+## Cenários
 
-Visualizar produtos disponíveis na página inicial.
+### Visualizar produtos disponíveis
 
 Fluxo validado:
 
 * Usuário acessa a página inicial.
 * Sistema apresenta a seção de produtos.
 * Sistema apresenta a lista de produtos disponíveis.
+
+### Adicionar produto ao carrinho
+
+Fluxo validado:
+
+* Usuário visualiza os produtos.
+* Usuário seleciona um produto.
+* Usuário adiciona o produto ao carrinho.
 
 **Status**
 
@@ -286,13 +296,26 @@ O framework está configurado para gerar automaticamente:
 * Screenshots em caso de falha
 * Vídeos das execuções
 
-Arquivos gerados em:
+Arquivos gerados:
 
 ```text
 cypress/screenshots
 
 cypress/videos
 ```
+
+---
+
+# Resultado atual da execução
+
+Cenários automatizados:
+
+| Feature                       | Status     |
+| ----------------------------- | ---------- |
+| Login                         | ✅ Passando |
+| Cadastro de usuário           | ✅ Passando |
+| Visualização de produtos      | ✅ Passando |
+| Adicionar produto ao carrinho | ✅ Passando |
 
 ---
 
@@ -321,15 +344,14 @@ cypress/videos
 * [x] Primeiro cenário BDD
 * [x] Acesso à tela de login
 * [x] Cadastro completo de usuário
-* [x] Continuação do fluxo após cadastro
+* [x] Validação de conta criada
+* [x] Continuação após cadastro
 * [x] Validação de usuário autenticado
 * [x] Visualização de produtos
-
-Próximas etapas:
-
-* [ ] Adicionar produto ao carrinho
+* [x] Adicionar produto ao carrinho
 * [ ] Validar carrinho
 * [ ] Checkout
+* [ ] Login utilizando usuário criado
 * [ ] Cenários negativos de login
 
 ---
@@ -377,7 +399,6 @@ Próximas etapas:
 * ✅ Cypress configurado
 * ✅ Cucumber configurado
 * ✅ Esbuild configurado
-* ✅ Primeiro cenário BDD
 * ✅ Page Object Model
 * ✅ Custom Commands
 * ✅ Fixtures
@@ -387,19 +408,20 @@ Próximas etapas:
 * ✅ Continuação após cadastro
 * ✅ Validação de usuário autenticado
 * ✅ Visualização de produtos
+* ✅ Adição de produto ao carrinho
 
 ---
 
 # Próximas implementações
 
-As próximas evoluções seguirão um fluxo funcional completo do usuário:
+As próximas evoluções seguirão um fluxo funcional de compra:
 
-* Adicionar produto ao carrinho
 * Validar carrinho
 * Checkout
+* Finalização de pedido
 * Automação de API
-* Integração com CI/CD
-* Geração de relatórios
+* Relatórios Allure
+* Integração CI/CD
 
 ---
 
