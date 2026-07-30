@@ -1,0 +1,22 @@
+{
+  "name": "qa-automation-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "cypress": "^15.19.0",
+    "esbuild": "^0.28.1"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^26.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8"
+  }
+}
