@@ -1,28 +1,50 @@
 const {
-  Given,
-  When,
-  Then,
+    When,
+    Then,
 } = require("@badeball/cypress-cucumber-preprocessor");
 
 const registerPage = require("../../pages/RegisterPage");
 
-let userEmail;
-
-
 When("acessar a tela de cadastro", () => {
-  registerPage.accessRegisterPage();
+    registerPage.accessRegisterPage();
 });
 
 When("preencher os dados iniciais de cadastro", () => {
-  cy.fixture("users").then((user) => {
-    userEmail = `qa_${Date.now()}@test.com`;
+    cy.fixture("users").then((user) => {
+        const email = `qa_${Date.now()}@test.com`;
 
-    registerPage.fillSignupName(user.newUser.name);
-    registerPage.fillSignupEmail(userEmail);
-    registerPage.clickSignupButton();
-  });
+        cy.wrap(email).as("userEmail");
+
+        registerPage.fillSignupName(user.newUser.name);
+        registerPage.fillSignupEmail(email);
+        registerPage.clickSignupButton();
+    });
 });
 
-Then("a tela de criação de conta deverá ser exibida", () => {
-  cy.url().should("include", "/signup");
+When("preencher os dados da conta", () => {
+    cy.fixture("users").then((user) => {
+        registerPage.selectGender();
+
+        registerPage.selectBirthDay(user.newUser.birthDay);
+        registerPage.selectBirthMonth(user.newUser.birthMonth);
+        registerPage.selectBirthYear(user.newUser.birthYear);
+
+        registerPage.fillPassword(user.newUser.password);
+
+        registerPage.fillFirstName(user.newUser.firstName);
+        registerPage.fillLastName(user.newUser.lastName);
+        registerPage.fillAddress(user.newUser.address);
+
+        registerPage.selectCountry(user.newUser.country);
+
+        registerPage.fillState(user.newUser.state);
+        registerPage.fillCity(user.newUser.city);
+        registerPage.fillZipcode(user.newUser.zipcode);
+        registerPage.fillMobile(user.newUser.mobile);
+    });
+});
+
+Then("a conta deverá ser criada com sucesso", () => {
+    registerPage.clickCreateAccount();
+    registerPage.validateAccountCreated();
 });

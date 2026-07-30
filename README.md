@@ -12,11 +12,11 @@ Construir uma base de automação contendo:
 
 * Automação Web
 * Testes BDD utilizando Gherkin
-* Page Object Model
+* Page Object Model (POM)
 * Custom Commands
 * Fixtures para massa de dados
 * Testes de API
-* Integração contínua (CI/CD)
+* Integração Contínua (CI/CD)
 
 ---
 
@@ -24,7 +24,7 @@ Construir uma base de automação contendo:
 
 Os testes automatizados são executados utilizando:
 
-Automation Exercise
+**Automation Exercise**
 
 https://automationexercise.com/
 
@@ -109,6 +109,8 @@ Exemplo:
 Scenario: Realizar cadastro de novo usuário
   Given que o usuário está na página inicial
   When acessar a tela de cadastro
+  And preencher os dados iniciais de cadastro
+  And preencher os dados da conta
   Then a conta deverá ser criada com sucesso
 ```
 
@@ -118,13 +120,13 @@ Scenario: Realizar cadastro de novo usuário
 
 Responsáveis por conectar os cenários BDD com as ações automatizadas.
 
-Exemplo:
+Arquivos atuais:
 
+* common.js
 * login.js
 * register.js
-* common.js
 
-O arquivo `common.js` contém steps compartilhados entre diferentes funcionalidades.
+O arquivo **common.js** concentra os steps compartilhados entre diferentes funcionalidades, reduzindo duplicação de código.
 
 ---
 
@@ -132,18 +134,17 @@ O arquivo `common.js` contém steps compartilhados entre diferentes funcionalida
 
 A camada de Page Object centraliza os elementos e ações das páginas.
 
-Exemplo:
+Páginas implementadas:
 
-```text
-LoginPage.js
-RegisterPage.js
-```
+* LoginPage.js
+* RegisterPage.js
 
 Benefícios:
 
 * Menor duplicação de código
 * Maior facilidade de manutenção
 * Melhor organização dos testes
+* Maior reutilização das ações
 
 ---
 
@@ -165,7 +166,9 @@ cy.accessApplication();
 
 ## Fixtures
 
-Dados utilizados nos testes ficam separados do código:
+Os dados utilizados nos testes ficam separados da implementação.
+
+Arquivo atual:
 
 ```text
 cypress/fixtures/users.json
@@ -174,8 +177,9 @@ cypress/fixtures/users.json
 Benefícios:
 
 * Organização da massa de dados
-* Facilidade para manutenção
-* Reutilização entre cenários
+* Reutilização
+* Facilidade de manutenção
+* Separação entre dados e lógica
 
 ---
 
@@ -183,17 +187,17 @@ Benefícios:
 
 ## Login
 
-### Cenário:
+### Cenário
 
-Acessar a tela de login
+Acessar a tela de login.
 
 Fluxo validado:
 
 * Usuário acessa a página inicial.
-* Usuário seleciona o menu "Signup / Login".
+* Usuário seleciona o menu **Signup / Login**.
 * Sistema direciona para a tela de login.
 
-Status:
+**Status**
 
 ✅ Implementado
 
@@ -201,21 +205,24 @@ Status:
 
 ## Cadastro de usuário
 
-### Cenário:
+### Cenário
 
-Realizar cadastro de novo usuário
+Realizar cadastro completo de um novo usuário.
 
-Fluxo implementado:
+Fluxo validado:
 
 * Usuário acessa a página inicial.
 * Usuário acessa a tela de cadastro.
-* Sistema inicia o processo de criação de usuário.
+* Usuário informa nome e e-mail.
+* Sistema apresenta a tela **Enter Account Information**.
+* Usuário preenche os dados obrigatórios da conta.
+* Usuário preenche os dados de endereço.
+* Usuário cria a conta.
+* Sistema apresenta a mensagem **Account Created!**
 
-Status:
+**Status**
 
-✅ Estrutura implementada
-
-🚧 Cadastro completo em desenvolvimento
+✅ Implementado
 
 ---
 
@@ -229,7 +236,7 @@ npm install
 
 ---
 
-## Abrir Cypress em modo interativo
+## Abrir Cypress
 
 ```bash
 npm run cy:open
@@ -237,7 +244,7 @@ npm run cy:open
 
 ---
 
-## Executar testes em modo headless
+## Executar testes
 
 ```bash
 npm run cy:run
@@ -247,12 +254,12 @@ npm run cy:run
 
 # Evidências de execução
 
-O framework está configurado para gerar:
+O framework está configurado para gerar automaticamente:
 
 * Screenshots em caso de falha
 * Vídeos das execuções
 
-Arquivos gerados:
+Arquivos gerados em:
 
 ```text
 cypress/screenshots
@@ -286,10 +293,11 @@ cypress/videos
 
 * [x] Primeiro cenário BDD
 * [x] Acesso à tela de login
-* [x] Estrutura de cadastro de usuário
-* [ ] Cadastro completo de usuário
+* [x] Cadastro completo de usuário
+* [ ] Continuação do fluxo após cadastro
 * [ ] Login utilizando usuário criado
 * [ ] Validação de usuário autenticado
+* [ ] Logout
 * [ ] Cenários negativos de login
 * [ ] Produtos
 * [ ] Carrinho
@@ -325,9 +333,9 @@ cypress/videos
 
 # Status do projeto
 
-Em desenvolvimento 🚀
+**Em desenvolvimento** 🚀
 
-Entregas concluídas:
+## Entregas concluídas
 
 * ✅ Projeto criado
 * ✅ Cypress configurado
@@ -337,12 +345,29 @@ Entregas concluídas:
 * ✅ Page Object Model
 * ✅ Custom Commands
 * ✅ Fixtures
-* ✅ Estrutura de cadastro de usuário
+* ✅ Cenário de acesso à tela de login
+* ✅ Cadastro completo de usuário até **Account Created**
+
+---
+
+# Próximas implementações
+
+As próximas evoluções seguirão um fluxo funcional completo do usuário:
+
+* Continuação após o cadastro
+* Login com usuário criado
+* Validação de usuário autenticado
+* Logout
+* Produtos
+* Carrinho
+* Checkout
+* Automação de API
+* Integração com CI/CD
 
 ---
 
 # Autor
 
-Márcio Dutra
+**Márcio Dutra**
 
 Projeto desenvolvido para estudo, evolução técnica e demonstração de boas práticas em automação de testes.
