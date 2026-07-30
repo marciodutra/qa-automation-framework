@@ -50,14 +50,16 @@ qa-automation-framework
 │   ├── e2e
 │   │   └── features
 │   │       ├── login.feature
-│   │       └── register.feature
+│   │       ├── register.feature
+│   │       └── products.feature
 │   │
 │   ├── fixtures
 │   │   └── users.json
 │   │
 │   ├── pages
 │   │   ├── LoginPage.js
-│   │   └── RegisterPage.js
+│   │   ├── RegisterPage.js
+│   │   └── ProductsPage.js
 │   │
 │   └── support
 │       │
@@ -67,7 +69,8 @@ qa-automation-framework
 │       └── step_definitions
 │           ├── common.js
 │           ├── login.js
-│           └── register.js
+│           ├── register.js
+│           └── products.js
 │
 ├── docs
 │
@@ -99,7 +102,9 @@ Fixtures
 Cypress
 ```
 
-## Feature
+---
+
+# Feature
 
 Responsável pela descrição dos cenários utilizando linguagem Gherkin.
 
@@ -116,7 +121,7 @@ Scenario: Realizar cadastro de novo usuário
 
 ---
 
-## Step Definitions
+# Step Definitions
 
 Responsáveis por conectar os cenários BDD com as ações automatizadas.
 
@@ -125,12 +130,13 @@ Arquivos atuais:
 * common.js
 * login.js
 * register.js
+* products.js
 
 O arquivo **common.js** concentra os steps compartilhados entre diferentes funcionalidades, reduzindo duplicação de código.
 
 ---
 
-## Page Object Model
+# Page Object Model
 
 A camada de Page Object centraliza os elementos e ações das páginas.
 
@@ -138,6 +144,7 @@ Páginas implementadas:
 
 * LoginPage.js
 * RegisterPage.js
+* ProductsPage.js
 
 Benefícios:
 
@@ -148,7 +155,7 @@ Benefícios:
 
 ---
 
-## Custom Commands
+# Custom Commands
 
 Comandos reutilizáveis ficam centralizados em:
 
@@ -164,7 +171,7 @@ cy.accessApplication();
 
 ---
 
-## Fixtures
+# Fixtures
 
 Os dados utilizados nos testes ficam separados da implementação.
 
@@ -219,6 +226,26 @@ Fluxo validado:
 * Usuário preenche os dados de endereço.
 * Usuário cria a conta.
 * Sistema apresenta a mensagem **Account Created!**
+* Usuário continua para a aplicação.
+* Sistema apresenta o usuário autenticado.
+
+**Status**
+
+✅ Implementado
+
+---
+
+## Produtos
+
+### Cenário
+
+Visualizar produtos disponíveis na página inicial.
+
+Fluxo validado:
+
+* Usuário acessa a página inicial.
+* Sistema apresenta a seção de produtos.
+* Sistema apresenta a lista de produtos disponíveis.
 
 **Status**
 
@@ -294,14 +321,16 @@ cypress/videos
 * [x] Primeiro cenário BDD
 * [x] Acesso à tela de login
 * [x] Cadastro completo de usuário
-* [ ] Continuação do fluxo após cadastro
-* [ ] Login utilizando usuário criado
-* [ ] Validação de usuário autenticado
-* [ ] Logout
-* [ ] Cenários negativos de login
-* [ ] Produtos
-* [ ] Carrinho
+* [x] Continuação do fluxo após cadastro
+* [x] Validação de usuário autenticado
+* [x] Visualização de produtos
+
+Próximas etapas:
+
+* [ ] Adicionar produto ao carrinho
+* [ ] Validar carrinho
 * [ ] Checkout
+* [ ] Cenários negativos de login
 
 ---
 
@@ -323,11 +352,18 @@ cypress/videos
 
 ---
 
+## Relatórios
+
+* [ ] Configuração Allure Report
+* [ ] Geração de relatórios de execução
+
+---
+
 ## CI/CD
 
 * [ ] GitHub Actions
 * [ ] Execução automática dos testes
-* [ ] Geração de relatórios
+* [ ] Pipeline de testes
 
 ---
 
@@ -346,7 +382,11 @@ cypress/videos
 * ✅ Custom Commands
 * ✅ Fixtures
 * ✅ Cenário de acesso à tela de login
-* ✅ Cadastro completo de usuário até **Account Created**
+* ✅ Cadastro completo de usuário
+* ✅ Validação de conta criada
+* ✅ Continuação após cadastro
+* ✅ Validação de usuário autenticado
+* ✅ Visualização de produtos
 
 ---
 
@@ -354,15 +394,12 @@ cypress/videos
 
 As próximas evoluções seguirão um fluxo funcional completo do usuário:
 
-* Continuação após o cadastro
-* Login com usuário criado
-* Validação de usuário autenticado
-* Logout
-* Produtos
-* Carrinho
+* Adicionar produto ao carrinho
+* Validar carrinho
 * Checkout
 * Automação de API
 * Integração com CI/CD
+* Geração de relatórios
 
 ---
 

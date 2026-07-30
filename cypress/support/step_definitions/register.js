@@ -4,6 +4,7 @@ const {
 } = require("@badeball/cypress-cucumber-preprocessor");
 
 const registerPage = require("../../pages/RegisterPage");
+const loginPage = require("../../pages/LoginPage");
 
 When("acessar a tela de cadastro", () => {
     registerPage.accessRegisterPage();
@@ -54,6 +55,10 @@ Then("a conta deverá ser criada com sucesso", () => {
         registerPage.clickContinue();
 
         registerPage.validateLoggedUser(user.newUser.name);
+
+        loginPage.clickLogout();
+
+        loginPage.validateLoginPage();
 
     });
 });

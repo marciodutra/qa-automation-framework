@@ -76,6 +76,7 @@ class RegisterPage {
             .should("be.visible")
             .click();
     }
+
     validateAccountCreated() {
         cy.url().should("include", "/account_created");
 

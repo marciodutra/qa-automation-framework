@@ -1,23 +1,31 @@
 class LoginPage {
-  accessLoginPage() {
-    cy.contains("Signup / Login").click();
-  }
+    accessLoginPage() {
+        cy.contains("Signup / Login").click();
+    }
 
-  fillEmail(email) {
-    cy.get('[data-qa="login-email"]').type(email);
-  }
+    validateLoginPage() {
+        cy.url().should("include", "/login");
+    }
 
-  fillPassword(password) {
-    cy.get('[data-qa="login-password"]').type(password);
-  }
+    fillLoginEmail(email) {
+        cy.get('[data-qa="login-email"]').type(email);
+    }
 
-  submitLogin() {
-    cy.get('[data-qa="login-button"]').click();
-  }
+    fillLoginPassword(password) {
+        cy.get('[data-qa="login-password"]').type(password);
+    }
 
-  validateLoginPage() {
-    cy.url().should("include", "/login");
-  }
+    clickLoginButton() {
+        cy.get('[data-qa="login-button"]').click();
+    }
+
+    clickLogout() {
+        cy.contains("Logout").click();
+    }
+
+    validateLoggedUser(name) {
+        cy.contains(`Logged in as ${name}`).should("be.visible");
+    }
 }
 
 module.exports = new LoginPage();
