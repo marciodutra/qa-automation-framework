@@ -1,1 +1,3 @@
-// Comandos customizados serão adicionados aqui.
+Cypress.Commands.add("accessApplication", () => {
+  cy.visit("/");
+});

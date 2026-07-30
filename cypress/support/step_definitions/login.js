@@ -7,7 +7,7 @@ const {
 const loginPage = require("../../pages/LoginPage");
 
 Given("que o usuário está na página inicial", () => {
-  cy.visit("/");
+  cy.accessApplication();
 });
 
 When("clicar no menu Signup \\/ Login", () => {
